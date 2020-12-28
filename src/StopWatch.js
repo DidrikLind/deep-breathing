@@ -5,6 +5,8 @@ import heartIcon from './media/heart.svg';
 
 import './StopWatch.css';
 
+const SOUND_EVERY_NTH_SECOND = 30;
+
 const Stopwatch = ({playSound}) => {
   const {
     seconds,
@@ -15,7 +17,7 @@ const Stopwatch = ({playSound}) => {
     pause,
     reset,
   } = useStopwatch({ autoStart: false })
-  const shouldPlaySound = seconds !== 0 && (seconds === 1 || seconds % 15 === 0);
+  const shouldPlaySound = isRunning && (seconds === 0 || seconds % SOUND_EVERY_NTH_SECOND === 0);
   if(shouldPlaySound) playSound();
   return (
     <div className="stop-watch">

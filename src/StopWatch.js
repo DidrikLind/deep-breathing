@@ -29,21 +29,27 @@ const Stopwatch = ({playSound, onRun, onStop}) => {
       </p>
       <button className="watch-action-button" 
         onClick={() => {
-          start();
-          onRun();
+          if(!isRunning) {
+            start();
+            onRun();
+          }
         }}
       >Start
       </button>
       <button className="watch-action-button"
         onClick={() => {
-          pause();
-          onStop();
+          if(isRunning) {
+            pause();
+            onStop();
+          }
         }}>Pause
       </button>
       <button className="watch-action-button" 
         onClick={() => {
-          reset();
-          onStop();
+          if(isRunning) {
+            reset();
+            onStop();
+          }
         }}>Reset
       </button>
     </div>

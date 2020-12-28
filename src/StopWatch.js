@@ -7,7 +7,7 @@ import './StopWatch.css';
 
 const SOUND_EVERY_NTH_SECOND = 30;
 
-const Stopwatch = ({playSound}) => {
+const Stopwatch = ({playSound, onRun, onStop}) => {
   const {
     seconds,
     minutes,
@@ -27,9 +27,25 @@ const Stopwatch = ({playSound}) => {
       <p className="watch-status-text">
         <img className={['heart-icon', isRunning && 'heart-icon-animated'].join(" ")} src={heartIcon} alt="logo" />
       </p>
-      <button className="watch-action-button" onClick={start}>Start</button>
-      <button className="watch-action-button" onClick={pause}>Pause</button>
-      <button className="watch-action-button" onClick={reset}>Reset</button>
+      <button className="watch-action-button" 
+        onClick={() => {
+          start();
+          onRun();
+        }}
+      >Start
+      </button>
+      <button className="watch-action-button"
+        onClick={() => {
+          pause();
+          onStop();
+        }}>Pause
+      </button>
+      <button className="watch-action-button" 
+        onClick={() => {
+          reset();
+          onStop();
+        }}>Reset
+      </button>
     </div>
   );
 }

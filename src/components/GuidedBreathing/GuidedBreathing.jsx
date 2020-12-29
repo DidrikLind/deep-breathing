@@ -56,6 +56,7 @@ const GuidedBreathing = ({setRunBreathing}) => {
               setIsRunning(true);
               isPaused ?  setBreathCounter(breathCounter + 1) : setBreathCounter(1);
               setIsPaused(false);
+              setRunBreathing(false);
               playBreath();
             }
           }}

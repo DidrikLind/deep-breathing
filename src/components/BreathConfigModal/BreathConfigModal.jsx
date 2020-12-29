@@ -2,11 +2,10 @@ import React, { useContext } from 'react';
 import 'react-responsive-modal/styles.css';
 import { Modal } from 'react-responsive-modal';
 
-import { BreathConfigContext } from '../../App';
 import NumberChooser from '../NumberChooser/NumberChooser';
+import { BreathConfigContext } from '../BreathConfigProvider/BreathConfigProvider';
 
 import './BreathConfigModal.scss';
-
 
 const BreathConfigModal = ({open, onCloseModal}) => {
   const { maxBreath, setMaxBreath, shouldStartBreathHold, setShouldStartBreathHold } = useContext(BreathConfigContext);
@@ -33,7 +32,8 @@ const BreathConfigModal = ({open, onCloseModal}) => {
           <label>Auto start breathhold?</label>
           <input
             type="radio"
-            checked={shouldStartBreathHold} 
+            checked={shouldStartBreathHold}
+            readOnly
             onClick={() => setShouldStartBreathHold(!shouldStartBreathHold)} 
           />
         </div>

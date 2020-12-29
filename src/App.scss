@@ -5,28 +5,25 @@
   background-size: cover;
   background-attachment: fixed;
   padding-bottom: 200px;
-}
 
-.app-header {
-  background-color: black;
-  color: white;
-  height: 40px;
-  text-align: left;
-
-  .header-icon {
-    height: 100%;
+  .app-header {
+    background-color: black;
     color: white;
-    
-    &:hover {
-      cursor: pointer;
+    height: 40px;
+    text-align: left;
+  
+    .header-icon {
+      height: 100%;
+      color: white;
+      
+      &:hover {
+        cursor: pointer;
+      }
     }
   }
 }
 
 
-.separator {
-  margin: 300px;
-}
 
 
 

@@ -5,13 +5,13 @@ import breathingSound from '../../media/zapsplat_human_male_deep_breathing_19843
 import breathingOverSound from '../../media/breathing_session_over.mp3';
 import lungIcon from '../../media/lungs.svg';
 import NormalButton from '../NormalButton/NormalButton';
-import { BreathConfigContext } from '../../App';
+import { BreathConfigContext } from '../BreathConfigProvider/BreathConfigProvider';
 
 import './GuidedBreathing.scss';
 
 const BREATH_TIME = 2200;
-const GuidedBreathing = () => {
-  const { maxBreath } = useContext(BreathConfigContext);
+const GuidedBreathing = ({setRunBreathing}) => {
+  const { maxBreath, shouldStartBreathHold } = useContext(BreathConfigContext);
   const [isRunning, setIsRunning] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
   const [isDone, setIsDone] = useState(false);
@@ -34,10 +34,11 @@ const GuidedBreathing = () => {
     if(isDone) {
       playBreathOver();
       setTimeout(() => stopBreath(), 1000);
+      if(shouldStartBreathHold) setTimeout(() => setRunBreathing(true), 2000);
     }
   }, [isDone])
 
-  if(isRunning && breathCounter === maxBreath) {
+  if(isRunning && breathCounter >= maxBreath) {
     setIsDone(true);
     setIsRunning(false);
   }

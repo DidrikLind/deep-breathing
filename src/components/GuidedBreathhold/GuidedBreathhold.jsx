@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import useSound from 'use-sound';
 import { useStopwatch } from 'react-timer-hook';
 
@@ -9,8 +9,8 @@ import musicSound from '../../media/audio_fe4d3bcac9.mp3';
 
 import './GuidedBreathhold.scss';
 
-const SOUND_EVERY_NTH_SECOND = 30;
-const GuidedBreathhold = ({}) => {
+const SOUND_EVERY_NTH_SECOND = 30; // TODO: Add configuration for BreathHold
+const GuidedBreathhold = ({runBreathing}) => {
   const [isPaused, setIsPaused] = useState(false);
   const [playBell] = useSound(bellSound);
   const [playMusic, { stop: stopMusic, pause: pauseMusic }] = useSound(musicSound, { loop: true });
@@ -32,8 +32,16 @@ const GuidedBreathhold = ({}) => {
       playMusic();
     }
   }
-  const shouldPlayBell = isRunning && seconds !== 0 && seconds % SOUND_EVERY_NTH_SECOND === 0;
-  if(shouldPlayBell) playBell();
+
+  useEffect(() => {
+    if(runBreathing && !isRunning) startBreathHold();
+  }, [runBreathing, startBreathHold, isRunning]);
+
+  useEffect(() => {
+    const shouldPlayBell = isRunning && seconds !== 0 && seconds % SOUND_EVERY_NTH_SECOND === 0;
+    if(shouldPlayBell) playBell();
+  }, [seconds])
+
   return (
     <div className="guided-breath-hold">
       <h1 className="guided-breath-hold-title">Guided Breath-hold</h1>

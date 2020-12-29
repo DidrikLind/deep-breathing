@@ -2,6 +2,7 @@ import React, {useState,useEffect,useContext} from 'react';
 import useSound from 'use-sound';
 
 import breathingSound from '../../media/zapsplat_human_male_deep_breathing_19843_2.2s.mp3';
+import breathingOverSound from '../../media/breathing_session_over.mp3';
 import lungIcon from '../../media/lungs.svg';
 import NormalButton from '../NormalButton/NormalButton';
 import { BreathConfigContext } from '../../App';
@@ -13,12 +14,14 @@ const GuidedBreathing = () => {
   const { maxBreath } = useContext(BreathConfigContext);
   const [isRunning, setIsRunning] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
+  const [isDone, setIsDone] = useState(false);
   const [breathCounter, setBreathCounter] = useState(0);
-  const [playBreath, {stop: stopBreath }] = useSound(breathingSound, 
+  const [playBreath, {stop: stopBreath, pause: pauseBreath }] = useSound(breathingSound, 
     {
       loop: true
     }
   );
+  const [playBreathOver] = useSound(breathingOverSound, {interrupt: false});
   useEffect(() => {
     if(isRunning) {
       const timer =
@@ -27,8 +30,16 @@ const GuidedBreathing = () => {
     }
   }, [breathCounter]);
 
-  if(breathCounter === maxBreath) {
-    setIsRunning(false)
+  useEffect(() => {
+    if(isDone) {
+      playBreathOver();
+      setTimeout(() => stopBreath(), 1000);
+    }
+  }, [isDone])
+
+  if(isRunning && breathCounter === maxBreath) {
+    setIsDone(true);
+    setIsRunning(false);
   }
   return (
     <div className="guided-breathing">
@@ -40,6 +51,7 @@ const GuidedBreathing = () => {
         <NormalButton className={`${isRunning ? 'active-button' : ''}`} text={`${isRunning ? 'Started' : 'Start'}`} disabled={isRunning}
           onClick={() => {
             if(!isRunning) {
+              setIsDone(false);
               setIsRunning(true);
               isPaused ?  setBreathCounter(breathCounter + 1) : setBreathCounter(1);
               setIsPaused(false);
@@ -52,15 +64,16 @@ const GuidedBreathing = () => {
             if(isRunning) {
               setIsRunning(false);
               setIsPaused(true);
-              stopBreath();
+              pauseBreath();
             }
           }}
         />
-        <NormalButton text="Reset" disabled={!isRunning && !isPaused}
+        <NormalButton text="Reset"
           onClick={() => {
             stopBreath();
             setIsRunning(false);
             setIsPaused(false);
+            setIsDone(false);
             setBreathCounter(0);
           }}
         />

@@ -10,7 +10,7 @@ import musicSound from '../../media/audio_fe4d3bcac9.mp3';
 import './GuidedBreathhold.scss';
 
 const SOUND_EVERY_NTH_SECOND = 30;
-const GuidedBreathhold = () => {
+const GuidedBreathhold = ({}) => {
   const [isPaused, setIsPaused] = useState(false);
   const [playBell] = useSound(bellSound);
   const [playMusic, { stop: stopMusic, pause: pauseMusic }] = useSound(musicSound, { loop: true });
@@ -22,7 +22,16 @@ const GuidedBreathhold = () => {
     start,
     pause,
     reset
-  } = useStopwatch({ autoStart: false })
+  } = useStopwatch({ autoStart: false });
+
+  const startBreathHold = () => {
+    if(!isRunning) {
+      start();
+      if(isPaused) setIsPaused(false);
+      playBell();
+      playMusic();
+    }
+  }
   const shouldPlayBell = isRunning && seconds !== 0 && seconds % SOUND_EVERY_NTH_SECOND === 0;
   if(shouldPlayBell) playBell();
   return (
@@ -37,14 +46,7 @@ const GuidedBreathhold = () => {
         <img className={['heart-icon', isRunning && 'heart-icon-animated'].join(" ")} src={heartIcon} alt="logo" />
       </p>
       <NormalButton className={`${isRunning ? 'active-button' : ''}`} text={`${isRunning ? 'Started' : 'Start'}`} disabled={isRunning}
-        onClick={() => {
-          if(!isRunning) {
-            start();
-            if(isPaused) setIsPaused(false);
-            playBell();
-            playMusic();
-          }
-        }}
+        onClick={() => startBreathHold()}
       />
       <NormalButton className={`${isPaused ? 'active-button' : ''}`} text={`${isPaused ? 'Paused' : 'Pause'}`} disabled={isPaused || !isRunning}
         onClick={() => {

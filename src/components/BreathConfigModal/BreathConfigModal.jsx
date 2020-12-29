@@ -9,7 +9,7 @@ import './BreathConfigModal.scss';
 
 
 const BreathConfigModal = ({open, onCloseModal}) => {
-  const { maxBreath, setMaxBreath } = useContext(BreathConfigContext);
+  const { maxBreath, setMaxBreath, shouldStartBreathHold, setShouldStartBreathHold } = useContext(BreathConfigContext);
   return (
     <div className="breath-config-modal-wrapper">
       <Modal
@@ -21,14 +21,21 @@ const BreathConfigModal = ({open, onCloseModal}) => {
         <div className="breath-modal-divider" />
         <h3>Guided Breathing</h3>
         <div className="breath-modal-max-breath">
-          <p>Max breath: 
+          <label>Max breath:</label>
             <NumberChooser
               number={maxBreath} 
               minVal={10}
               maxVal={1000}
               setNumber={setMaxBreath}
             />
-          </p>
+        </div>
+        <div className="breath-modal-auto-start-breath-hold">
+          <label>Auto start breathhold?</label>
+          <input
+            type="radio"
+            checked={shouldStartBreathHold} 
+            onClick={() => setShouldStartBreathHold(!shouldStartBreathHold)} 
+          />
         </div>
         <h3>Guided Breath-hold</h3>
       </Modal>

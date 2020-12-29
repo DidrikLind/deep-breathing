@@ -12,6 +12,7 @@ import './App.scss';
 const defaultConfig = {
   breathing: {
     maxBreath: 40,
+    shouldStartBreathHold: false,
   },
   breathHold: {
     // TODO: fill me up.
@@ -36,10 +37,14 @@ function App() {
           }}
           alt="logo" />
       </header>
+      {/* TODO: Simplyfi setting of config? */}
       <BreathConfigContext.Provider
         value={{
           maxBreath: config.breathing.maxBreath,
-          setMaxBreath: (num) => setConfig({...config, breathing: {...config.breathing, maxBreath: num} })
+          setMaxBreath: (num) => setConfig({...config, breathing: {...config.breathing, maxBreath: num} }),
+          shouldStartBreathHold: config.breathing.shouldStartBreathHold,
+          setShouldStartBreathHold: (bool) => setConfig({...config, breathing: {...config.breathing, shouldStartBreathHold: bool} }),
+          // TODO: make generalcontext for state!! startBreathHold: (breathHoldFunc) => breathHoldFunc(),
         }}
       >
         <GuidedBreathing />

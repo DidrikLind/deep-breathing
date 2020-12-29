@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import useSound from 'use-sound';
 import { useStopwatch } from 'react-timer-hook';
 
@@ -6,11 +6,12 @@ import NormalButton from '../NormalButton/NormalButton';
 import heartIcon from '../../media/heart.svg';
 import bellSound from '../../media/bell_sound.mp3';
 import musicSound from '../../media/audio_fe4d3bcac9.mp3';
+import { BreathConfigContext } from '../BreathConfigProvider/BreathConfigProvider';
 
 import './GuidedBreathhold.scss';
 
-const SOUND_EVERY_NTH_SECOND = 30; // TODO: Add configuration for BreathHold
 const GuidedBreathhold = ({runBreathing}) => {
+  const { pingEveryNthSecond } = useContext(BreathConfigContext);
   const [isPaused, setIsPaused] = useState(false);
   const [playBell] = useSound(bellSound);
   const [playMusic, { stop: stopMusic, pause: pauseMusic }] = useSound(musicSound, { loop: true });
@@ -35,10 +36,10 @@ const GuidedBreathhold = ({runBreathing}) => {
 
   useEffect(() => {
     if(runBreathing && !isRunning) startBreathHold();
-  }, [runBreathing, startBreathHold, isRunning]);
+  }, [runBreathing]);
 
   useEffect(() => {
-    const shouldPlayBell = isRunning && seconds !== 0 && seconds % SOUND_EVERY_NTH_SECOND === 0;
+    const shouldPlayBell = isRunning && seconds !== 0 && seconds % pingEveryNthSecond === 0;
     if(shouldPlayBell) playBell();
   }, [seconds])
 

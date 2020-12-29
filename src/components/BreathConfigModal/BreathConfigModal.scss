@@ -1,15 +1,39 @@
  .react-responsive-modal-modal {
   background: black; 
   color: white;
+  width: 70%;
+  border: 1px solid white;
 }
 
 .breath-modal-divider {
   border: 1px solid white;
   color: white;
 }
+
 .breath-modal-max-breath {
   margin-bottom: 1rem;
+
+  .max-breath-counter {
+    display: block;
+    border: 1px solid white;
+    height: 2em;
+  }
 }
+
 .breath-modal-auto-start-breath-hold {
   margin-bottom: 1rem;
+
+  .auto-start-check {
+    height: 2em;
+  }
+}
+
+.breath-modal-ping-every-nth {
+  margin-bottom: 1rem;
+  
+  .ping-breath-counter {
+    display: block;
+    border: 1px solid white;
+    height: 2em;
+  }
 }

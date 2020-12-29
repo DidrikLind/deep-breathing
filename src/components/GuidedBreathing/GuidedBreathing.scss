@@ -1,0 +1,41 @@
+.guided-breathing {
+
+  .guided-breathing-title {
+    text-align: center;
+    color: black;
+  }
+  
+  .lung-icon {
+    width: 20%;
+    height: 20%;
+  }
+  
+  .lung-icon-animated {
+    animation: breathing 2.2s ease-out infinite normal;
+  }
+  
+  @keyframes breathing {
+    0% {
+      transform: scale(0.9);
+    }
+  
+    25% {
+      transform: scale(1);
+    }
+  
+    60% {
+      transform: scale(0.9);
+    }
+  
+    100% {
+      transform: scale(0.9);
+    }
+  }
+  
+  .active-button {
+    background: rgb(144, 212, 144);
+    &:focus {
+      background: rgb(144, 212, 144);
+    }
+  }
+}

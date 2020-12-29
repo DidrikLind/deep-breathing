@@ -1,0 +1,64 @@
+.guided-breath-hold {
+
+  .guided-breath-hold-title {
+    text-align: center;
+    color: black;
+  }
+
+  .stop-watch {
+    .watch-time-text {
+      font-size: 100px;
+      color: black;
+    }
+
+  }
+  
+  .heart-icon {
+    width: 20%;
+    height: 20%;
+  }
+  
+  .heart-icon-animated {
+    animation: heartbeat 1s infinite;
+  }
+  
+  .heart-icon-animated img {
+    color: red;
+    background-color: red;
+  }
+  
+  @keyframes heartbeat {
+    0%
+    {
+      transform: scale( .75 );
+    }
+    20%
+    {
+      transform: scale( 1 );
+    }
+    40%
+    {
+      transform: scale( .75 );
+    }
+    60%
+    {
+      transform: scale( 1 );
+    }
+    80%
+    {
+      transform: scale( .75 );
+    }
+    100%
+    {
+      transform: scale( .75 );
+    }
+  }
+
+  .active-button {
+    background: rgb(144, 212, 144);
+    &:focus {
+      background: rgb(144, 212, 144);
+    }
+  }
+
+}

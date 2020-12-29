@@ -1,0 +1,37 @@
+.normal-button {
+  display: inline-block;
+  border: none;
+  padding: 1rem 2rem;
+  margin: 0;
+  text-decoration: none;
+  background: black;
+  color: #ffffff;
+  font-size: 1rem;
+  cursor: pointer;
+  text-align: center;
+  transition: background 250ms ease-in-out, 
+              transform 150ms ease;
+
+  &:hover {
+    background: grey;
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &:active {
+    transform: scale(1.5);
+  }
+
+  &:disabled {
+    transition: none;
+    cursor: not-allowed;
+  }
+}
+
+
+
+
+
+

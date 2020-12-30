@@ -9,19 +9,15 @@ import { BreathConfigContext } from '../BreathConfigProvider/BreathConfigProvide
 
 import './GuidedBreathing.scss';
 
-const BREATH_TIME = 2200;
+const BREATH_TIME = 2200; // TODO: ADdd config for breathing time and add corresponding sounds for it!
 const GuidedBreathing = ({setRunBreathing}) => {
   const { maxBreath, shouldStartBreathHold } = useContext(BreathConfigContext);
   const [isRunning, setIsRunning] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
   const [isDone, setIsDone] = useState(false);
   const [breathCounter, setBreathCounter] = useState(0);
-  const [playBreath, {stop: stopBreath, pause: pauseBreath }] = useSound(breathingSound, 
-    {
-      loop: true
-    }
-  );
-  const [playBreathOver] = useSound(breathingOverSound, {interrupt: false});
+  const [playBreath, {stop: stopBreath, pause: pauseBreath }] = useSound(breathingSound, {loop: true});
+  const [playBreathOver] = useSound(breathingOverSound, {volume: 1});
   useEffect(() => {
     if(isRunning) {
       const timer =
@@ -41,6 +37,8 @@ const GuidedBreathing = ({setRunBreathing}) => {
   if(isRunning && breathCounter >= maxBreath) {
     setIsDone(true);
     setIsRunning(false);
+    // TODO: This is a ugly way to trigger scrollspy. Can we do it better later?
+    document.querySelector('a[href$="section-breath-hold"]').click();
   }
   return (
     <div className="guided-breathing">

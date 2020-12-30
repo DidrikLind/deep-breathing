@@ -35,7 +35,10 @@ const GuidedBreathhold = ({runBreathing}) => {
   }
 
   useEffect(() => {
-    if(runBreathing && !isRunning) startBreathHold();
+    if(runBreathing && !isRunning) {
+      reset();
+      startBreathHold();
+    }
   }, [runBreathing]);
 
   useEffect(() => {

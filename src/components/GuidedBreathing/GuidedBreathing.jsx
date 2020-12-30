@@ -30,15 +30,17 @@ const GuidedBreathing = ({setRunBreathing}) => {
     if(isDone) {
       playBreathOver();
       setTimeout(() => stopBreath(), 1000);
-      if(shouldStartBreathHold) setTimeout(() => setRunBreathing(true), 2000);
+      if(shouldStartBreathHold) {
+        // TODO: This is a ugly way to trigger scrollspy. Can we do it better later?
+        document.querySelector('a[href$="section-breath-hold"]').click();
+        setTimeout(() => setRunBreathing(true), 8000); // TODO: Add configuration for how long to wait til auto start.
+      }
     }
   }, [isDone])
 
   if(isRunning && breathCounter >= maxBreath) {
     setIsDone(true);
     setIsRunning(false);
-    // TODO: This is a ugly way to trigger scrollspy. Can we do it better later?
-    document.querySelector('a[href$="section-breath-hold"]').click();
   }
   return (
     <div className="guided-breathing">

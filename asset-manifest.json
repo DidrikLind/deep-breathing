@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/deep-breathing/static/css/main.69d4a684.chunk.css",
-    "main.js": "/deep-breathing/static/js/main.746a5c1f.chunk.js",
-    "main.js.map": "/deep-breathing/static/js/main.746a5c1f.chunk.js.map",
+    "main.css": "/deep-breathing/static/css/main.2b33b526.chunk.css",
+    "main.js": "/deep-breathing/static/js/main.ee20ca2c.chunk.js",
+    "main.js.map": "/deep-breathing/static/js/main.ee20ca2c.chunk.js.map",
     "runtime-main.js": "/deep-breathing/static/js/runtime-main.89d1f80b.js",
     "runtime-main.js.map": "/deep-breathing/static/js/runtime-main.89d1f80b.js.map",
     "static/css/2.26b8b167.chunk.css": "/deep-breathing/static/css/2.26b8b167.chunk.css",
@@ -14,7 +14,7 @@
     "static/js/4.ea49b584.chunk.js.map": "/deep-breathing/static/js/4.ea49b584.chunk.js.map",
     "index.html": "/deep-breathing/index.html",
     "static/css/2.26b8b167.chunk.css.map": "/deep-breathing/static/css/2.26b8b167.chunk.css.map",
-    "static/css/main.69d4a684.chunk.css.map": "/deep-breathing/static/css/main.69d4a684.chunk.css.map",
+    "static/css/main.2b33b526.chunk.css.map": "/deep-breathing/static/css/main.2b33b526.chunk.css.map",
     "static/js/2.6d9233a9.chunk.js.LICENSE.txt": "/deep-breathing/static/js/2.6d9233a9.chunk.js.LICENSE.txt",
     "static/js/3.97c88b93.chunk.js.LICENSE.txt": "/deep-breathing/static/js/3.97c88b93.chunk.js.LICENSE.txt",
     "static/media/audio_fe4d3bcac9.a379b9b0.mp3": "/deep-breathing/static/media/audio_fe4d3bcac9.a379b9b0.mp3",
@@ -30,7 +30,7 @@
     "static/js/runtime-main.89d1f80b.js",
     "static/css/2.26b8b167.chunk.css",
     "static/js/2.6d9233a9.chunk.js",
-    "static/css/main.69d4a684.chunk.css",
-    "static/js/main.746a5c1f.chunk.js"
+    "static/css/main.2b33b526.chunk.css",
+    "static/js/main.ee20ca2c.chunk.js"
   ]
 }

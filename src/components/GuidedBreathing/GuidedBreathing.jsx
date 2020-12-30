@@ -43,7 +43,7 @@ const GuidedBreathing = ({setRunBreathing}) => {
   return (
     <div className="guided-breathing">
         <h1 className="guided-breathing-title">Guided Breathing</h1>
-        <h2>{breathCounter} / {maxBreath}</h2>
+        <h2 className="guided-breathing-counter">{breathCounter} / {maxBreath}</h2>
         <p>
           <img className={['lung-icon', isRunning && 'lung-icon-animated'].join(" ")} src={lungIcon} alt="logo" />
         </p>

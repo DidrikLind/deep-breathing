@@ -4,6 +4,10 @@
     text-align: center;
     color: black;
   }
+
+  .guided-breathing-counter {
+    font-size: 50px;
+  }
   
   .lung-icon {
     width: 20%;
@@ -36,6 +40,15 @@
     background: rgb(144, 212, 144);
     &:focus {
       background: rgb(144, 212, 144);
+    }
+  }
+}
+
+@media (max-width: 700px) {
+  .guided-breathing {
+    .lung-icon {
+      width: 40%;
+      height: 40%;
     }
   }
 }

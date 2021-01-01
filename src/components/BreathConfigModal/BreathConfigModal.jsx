@@ -8,6 +8,7 @@ import { BreathConfigContext } from '../BreathConfigProvider/BreathConfigProvide
 
 import './BreathConfigModal.scss';
 
+// TODO: Make this dialog prettier. Its ugly as f*ck.
 const BreathConfigModal = ({open, onCloseModal}) => {
   const {
     maxBreath, 
@@ -16,6 +17,8 @@ const BreathConfigModal = ({open, onCloseModal}) => {
     setShouldStartBreathHold,
     pingEveryNthSecond,
     setPingEveryNthSecond,
+    startBreathHoldTime,
+    setStartBreathHoldTime,
   } = useContext(BreathConfigContext);
   return (
     <div className="breath-config-modal-wrapper">
@@ -40,6 +43,20 @@ const BreathConfigModal = ({open, onCloseModal}) => {
         <div className="breath-modal-auto-start-breath-hold">
           <label>Auto start breathhold</label>
           <NormalToggleButton className="auto-start-check" checked={shouldStartBreathHold} onClick={() => setShouldStartBreathHold(!shouldStartBreathHold)}/>
+
+          {shouldStartBreathHold &&
+          <>
+            <label>Auto start time</label>
+            <NumberChooser
+              className="max-breath-counter"
+              number={startBreathHoldTime} 
+              minVal={0}
+              maxVal={100}
+              setNumber={setStartBreathHoldTime}
+            />
+            s
+          </>
+          }
         </div>
         <h3>Guided Breath-hold</h3>
         <div className="breath-modal-ping-every-nth">

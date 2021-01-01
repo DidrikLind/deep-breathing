@@ -6,6 +6,7 @@ const defaultConfig = {
   breathing: {
     maxBreath: 40,
     shouldStartBreathHold: false,
+    startBreathHoldTime: 8, // seconds
   },
   breathHold: {
     pingEveryNthSecond: 30,
@@ -25,6 +26,8 @@ const BreathConfigProvider = ({children}) => {
         setShouldStartBreathHold: (bool) => setConfig({...config, breathing: {...config.breathing, shouldStartBreathHold: bool} }),
         pingEveryNthSecond: config.breathHold.pingEveryNthSecond,
         setPingEveryNthSecond: (num) => setConfig({...config, breathHold: {...config.breathHold, pingEveryNthSecond: num }}),
+        startBreathHoldTime: config.breathing.startBreathHoldTime,
+        setStartBreathHoldTime: (num) => setConfig({...config, breathing: {...config.breathing, startBreathHoldTime: num } }),
       }}
   >
     {children}

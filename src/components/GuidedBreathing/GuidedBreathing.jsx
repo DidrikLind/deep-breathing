@@ -11,7 +11,7 @@ import './GuidedBreathing.scss';
 
 const BREATH_TIME = 2200; // TODO: ADdd config for breathing time and add corresponding sounds for it!
 const GuidedBreathing = ({setRunBreathing}) => {
-  const { maxBreath, shouldStartBreathHold } = useContext(BreathConfigContext);
+  const { maxBreath, shouldStartBreathHold, startBreathHoldTime } = useContext(BreathConfigContext);
   const [isRunning, setIsRunning] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
   const [isDone, setIsDone] = useState(false);
@@ -33,7 +33,7 @@ const GuidedBreathing = ({setRunBreathing}) => {
       if(shouldStartBreathHold) {
         // TODO: This is a ugly way to trigger scrollspy. Can we do it better later?
         document.querySelector('a[href$="section-breath-hold"]').click();
-        setTimeout(() => setRunBreathing(true), 8000); // TODO: Add configuration for how long to wait til auto start.
+        setTimeout(() => setRunBreathing(true), startBreathHoldTime * 1000 );
       }
     }
   }, [isDone])

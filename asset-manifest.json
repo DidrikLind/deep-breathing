@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/deep-breathing/static/css/main.3b64c780.chunk.css",
-    "main.js": "/deep-breathing/static/js/main.37551045.chunk.js",
-    "main.js.map": "/deep-breathing/static/js/main.37551045.chunk.js.map",
+    "main.js": "/deep-breathing/static/js/main.38ec7dcc.chunk.js",
+    "main.js.map": "/deep-breathing/static/js/main.38ec7dcc.chunk.js.map",
     "runtime-main.js": "/deep-breathing/static/js/runtime-main.89d1f80b.js",
     "runtime-main.js.map": "/deep-breathing/static/js/runtime-main.89d1f80b.js.map",
     "static/css/2.26b8b167.chunk.css": "/deep-breathing/static/css/2.26b8b167.chunk.css",
-    "static/js/2.33aa2b02.chunk.js": "/deep-breathing/static/js/2.33aa2b02.chunk.js",
-    "static/js/2.33aa2b02.chunk.js.map": "/deep-breathing/static/js/2.33aa2b02.chunk.js.map",
+    "static/js/2.6fa89976.chunk.js": "/deep-breathing/static/js/2.6fa89976.chunk.js",
+    "static/js/2.6fa89976.chunk.js.map": "/deep-breathing/static/js/2.6fa89976.chunk.js.map",
     "static/js/3.97c88b93.chunk.js": "/deep-breathing/static/js/3.97c88b93.chunk.js",
     "static/js/3.97c88b93.chunk.js.map": "/deep-breathing/static/js/3.97c88b93.chunk.js.map",
     "static/js/4.ea49b584.chunk.js": "/deep-breathing/static/js/4.ea49b584.chunk.js",
@@ -17,13 +17,14 @@
     "service-worker.js.map": "/deep-breathing/service-worker.js.map",
     "static/css/2.26b8b167.chunk.css.map": "/deep-breathing/static/css/2.26b8b167.chunk.css.map",
     "static/css/main.3b64c780.chunk.css.map": "/deep-breathing/static/css/main.3b64c780.chunk.css.map",
-    "static/js/2.33aa2b02.chunk.js.LICENSE.txt": "/deep-breathing/static/js/2.33aa2b02.chunk.js.LICENSE.txt",
+    "static/js/2.6fa89976.chunk.js.LICENSE.txt": "/deep-breathing/static/js/2.6fa89976.chunk.js.LICENSE.txt",
     "static/js/3.97c88b93.chunk.js.LICENSE.txt": "/deep-breathing/static/js/3.97c88b93.chunk.js.LICENSE.txt",
     "static/media/audio_fe4d3bcac9.a379b9b0.mp3": "/deep-breathing/static/media/audio_fe4d3bcac9.a379b9b0.mp3",
     "static/media/bell_sound.c679b23d.mp3": "/deep-breathing/static/media/bell_sound.c679b23d.mp3",
     "static/media/App.scss": "/deep-breathing/static/media/bg2.87f38fc7.png",
+    "static/media/bhs.c43aefa4.mp3": "/deep-breathing/static/media/bhs.c43aefa4.mp3",
     "static/media/breath_icon.9f23d969.svg": "/deep-breathing/static/media/breath_icon.9f23d969.svg",
-    "static/media/breathing_session_over.3e8fa907.mp3": "/deep-breathing/static/media/breathing_session_over.3e8fa907.mp3",
+    "static/media/breathingsessionover.a30488f5.mp3": "/deep-breathing/static/media/breathingsessionover.a30488f5.mp3",
     "static/media/heart.8e99651c.svg": "/deep-breathing/static/media/heart.8e99651c.svg",
     "static/media/lungs.e926ca5b.svg": "/deep-breathing/static/media/lungs.e926ca5b.svg",
     "static/media/zapsplat_human_male_deep_breathing_19843_2.2s.f91a10f9.mp3": "/deep-breathing/static/media/zapsplat_human_male_deep_breathing_19843_2.2s.f91a10f9.mp3"
@@ -31,8 +32,8 @@
   "entrypoints": [
     "static/js/runtime-main.89d1f80b.js",
     "static/css/2.26b8b167.chunk.css",
-    "static/js/2.33aa2b02.chunk.js",
+    "static/js/2.6fa89976.chunk.js",
     "static/css/main.3b64c780.chunk.css",
-    "static/js/main.37551045.chunk.js"
+    "static/js/main.38ec7dcc.chunk.js"
   ]
 }

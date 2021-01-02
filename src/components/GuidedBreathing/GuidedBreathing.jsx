@@ -2,7 +2,7 @@ import React, {useState,useEffect,useContext} from 'react';
 import useSound from 'use-sound';
 
 import breathingSound from '../../media/zapsplat_human_male_deep_breathing_19843_2.2s.mp3';
-import breathingOverSound from '../../media/breathing_session_over.mp3';
+import breathingOverSound from '../../media/breathingsessionover.mp3';
 import lungIcon from '../../media/lungs.svg';
 import NormalButton from '../NormalButton/NormalButton';
 import { BreathConfigContext } from '../BreathConfigProvider/BreathConfigProvider';
@@ -16,7 +16,7 @@ const GuidedBreathing = ({setRunBreathing}) => {
   const [isPaused, setIsPaused] = useState(false);
   const [isDone, setIsDone] = useState(false);
   const [breathCounter, setBreathCounter] = useState(0);
-  const [playBreath, {stop: stopBreath, pause: pauseBreath }] = useSound(breathingSound, {loop: true});
+  const [playBreath, {stop: stopBreath, pause: pauseBreath }] = useSound(breathingSound, {loop: true, volume: 0.5});
   const [playBreathOver] = useSound(breathingOverSound, {volume: 1});
   useEffect(() => {
     if(isRunning) {

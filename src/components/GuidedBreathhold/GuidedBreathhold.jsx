@@ -5,7 +5,7 @@ import { useStopwatch } from 'react-timer-hook';
 import NormalButton from '../NormalButton/NormalButton';
 import heartIcon from '../../media/heart.svg';
 import bellSound from '../../media/bell_sound.mp3';
-import musicSound from '../../media/audio_fe4d3bcac9.mp3';
+import musicSound from '../../media/Polaris.mp3';
 import breathHoldStartSound from '../../media/bhs.mp3';
 import { BreathConfigContext } from '../BreathConfigProvider/BreathConfigProvider';
 
@@ -14,7 +14,7 @@ import './GuidedBreathhold.scss';
 const GuidedBreathhold = ({runBreathing}) => {
   const { pingEveryNthSecond } = useContext(BreathConfigContext);
   const [isPaused, setIsPaused] = useState(false);
-  const [playBell] = useSound(bellSound);
+  const [playBell] = useSound(bellSound, { volume: 1 });
   const [playMusic, { stop: stopMusic, pause: pauseMusic }] = useSound(musicSound, { loop: true });
   const [playBreathHoldStart, { duration }] = useSound(breathHoldStartSound);
   const {
@@ -28,13 +28,18 @@ const GuidedBreathhold = ({runBreathing}) => {
   } = useStopwatch({ autoStart: false });
   const startBreathHold = () => {
     if(!isRunning) {
-      playBreathHoldStart();
-      setTimeout(() => {
+      if(!isPaused) {
+        playBreathHoldStart();
+        setTimeout(() => {
+          start();
+          playMusic();
+        }, duration ); // wait to start til voice is done.
+      } else {
+        setIsPaused(false);
         start();
-        if(isPaused) setIsPaused(false);
-        playBell();
         playMusic();
-      }, duration ); // wait to start til voice is done.
+      }
+
     }
   }
 
@@ -46,7 +51,7 @@ const GuidedBreathhold = ({runBreathing}) => {
   }, [runBreathing]);
 
   useEffect(() => {
-    const shouldPlayBell = isRunning && seconds !== 0 && seconds % pingEveryNthSecond === 0;
+    const shouldPlayBell = isRunning && (seconds+1) % pingEveryNthSecond === 0;
     if(shouldPlayBell) playBell();
   }, [seconds])
 

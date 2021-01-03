@@ -18,7 +18,7 @@ const GuidedBreathing = ({setRunBreathing}) => {
   const [isDone, setIsDone] = useState(false);
   const [breathCounter, setBreathCounter] = useState(0);
 
-  const [playBreath, {stop: stopBreath, pause: pauseBreath, duration }] = useSound(breathingSpeedSound(breathingSpeed), {loop: true, volume: 0.5});
+  const [playBreath, {stop: stopBreath, pause: pauseBreath, duration }] = useSound(breathingSpeedSound(breathingSpeed), {loop: true, volume: 1});
 
   const [playBreathOver] = useSound(breathingOverSound, {volume: 1});
   useEffect(() => {

@@ -4,7 +4,7 @@ import { Modal } from 'react-responsive-modal';
 
 import NumberChooser from '../NumberChooser/NumberChooser';
 import NormalToggleButton from '../NormalToggleButton/NormalToggleButton';
-import { BreathConfigContext } from '../BreathConfigProvider/BreathConfigProvider';
+import { BreathConfigContext, BREATHING_SPEED } from '../BreathConfigProvider/BreathConfigProvider';
 
 import './BreathConfigModal.scss';
 
@@ -19,6 +19,8 @@ const BreathConfigModal = ({open, onCloseModal}) => {
     setPingEveryNthSecond,
     startBreathHoldTime,
     setStartBreathHoldTime,
+    breathingSpeed,
+    setBreathingSpeed,
   } = useContext(BreathConfigContext);
   return (
     <div className="breath-config-modal-wrapper">
@@ -30,6 +32,15 @@ const BreathConfigModal = ({open, onCloseModal}) => {
         <h2>Configuration</h2>
         <div className="breath-modal-divider" />
         <h3>Guided Breathing</h3>
+        <div className="breath-modal-breath-speed">
+            <p>Breathing speed</p>
+            <input type="radio" onClick={() => setBreathingSpeed(BREATHING_SPEED.SLOW) } checked={breathingSpeed === BREATHING_SPEED.SLOW} />
+            <label>Slow</label>
+            <input type="radio" onClick={() => setBreathingSpeed(BREATHING_SPEED.MEDIUM) } checked={breathingSpeed === BREATHING_SPEED.MEDIUM} />
+            <label>Medium</label>
+            <input type="radio" onClick={() => setBreathingSpeed(BREATHING_SPEED.FAST) } checked={breathingSpeed === BREATHING_SPEED.FAST} />
+            <label>Fast</label>
+        </div>
         <div className="breath-modal-max-breath">
           <label>Max breath</label>
           <NumberChooser
@@ -43,7 +54,6 @@ const BreathConfigModal = ({open, onCloseModal}) => {
         <div className="breath-modal-auto-start-breath-hold">
           <label>Auto start breathhold</label>
           <NormalToggleButton className="auto-start-check" checked={shouldStartBreathHold} onClick={() => setShouldStartBreathHold(!shouldStartBreathHold)}/>
-
           {shouldStartBreathHold &&
           <>
             <label>Auto start time</label>
